@@ -60,7 +60,7 @@ steps:
     command: pack
     nobuild: true
     includesymbols: true
-    versioningScheme: byBuildNumber
+    versioningScheme: byEnvVar
 
 - task: NuGetCommand@2
   displayName: 'NuGet push to nuget'
