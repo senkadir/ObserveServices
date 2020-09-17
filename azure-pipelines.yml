@@ -17,7 +17,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  project: '**/ObservceServices.Core.csproj'
+  project: '**/ObserveServices.Core.csproj'
   testProjects: '**/*[Tt]ests/*.csproj'
 
 steps:
