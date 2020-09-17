@@ -64,6 +64,7 @@ steps:
     majorVersion: '$(major)'
     minorVersion: '$(minor)'
     patchVersion: '$(patch)'
+    projects: '$(project)'
 
 
 - task: NuGetCommand@2
