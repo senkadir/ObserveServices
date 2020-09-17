@@ -22,6 +22,7 @@ variables:
   Major: 1
   Minor: 0
   Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
+  FullVersion: $(Major).$(Minor).$(Patch)
 
 steps:
 - task: DotNetCoreCLI@2
@@ -61,7 +62,7 @@ steps:
     nobuild: true
     includesymbols: true
     versioningScheme: byEnvVar
-    versionEnvVar: $(Major).$(Minor).$(Patch)
+    versionEnvVar: $('FullVersion')
 
 - task: NuGetCommand@2
   displayName: 'NuGet push to nuget'
