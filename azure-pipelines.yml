@@ -3,7 +3,7 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-name: $(Major).$(Minor).$(Patch)
+name: $(major).$(minor).$(patch)
 
 trigger:
   branches:
@@ -19,10 +19,9 @@ variables:
   buildConfiguration: 'Release'
   project: '**/ObserveServices.Core.csproj'
   testProjects: '**/*[Tt]ests/*.csproj'
-  Major: 1
-  Minor: 0
-  Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
-  FullVersion: $(Major).$(Minor).$(Patch)
+  major: 1
+  minor: 0
+  patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 0)]
 
 steps:
 - task: DotNetCoreCLI@2
@@ -61,8 +60,11 @@ steps:
     command: pack
     nobuild: true
     includesymbols: true
-    versioningScheme: byEnvVar
-    versionEnvVar: '$(FullVersion)'
+    versioningScheme: ByPrereleaseNumber
+    majorVersion: '$(major)'
+    minorVersion: '$(minor)'
+    patchVersion: '$(patch)'
+
 
 - task: NuGetCommand@2
   displayName: 'NuGet push to nuget'
