@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+    <metadata>
+        <id>Observce.Packages</id>
+
+        <version>1.0.0-beta</version>
+
+        <authors>absen</authors>
+
+        <owners>abdulkadir sen</owners>
+
+        <projectUrl></projectUrl>
+
+        <license type="expression"></license>
+
+        <iconUrl></iconUrl>
+
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <releaseNotes>Bug fixes and performance improvements</releaseNotes>
+
+        <description>Core utility functions for api applications</description>
+
+        <copyright>absen</copyright>
+
+        <tags></tags>
+
+        <dependencies>
+            <dependency id="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+            <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
+        </dependencies>
+    </metadata>
+</package>
