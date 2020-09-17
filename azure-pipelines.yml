@@ -61,6 +61,7 @@ steps:
     nobuild: true
     includesymbols: true
     versioningScheme: byEnvVar
+    versionEnvVar: $(Major).$(Minor).$(Patch)
 
 - task: NuGetCommand@2
   displayName: 'NuGet push to nuget'
