@@ -62,7 +62,7 @@ steps:
     nobuild: true
     includesymbols: true
     versioningScheme: byEnvVar
-    versionEnvVar: $('FullVersion')
+    versionEnvVar: '$(FullVersion)'
 
 - task: NuGetCommand@2
   displayName: 'NuGet push to nuget'
