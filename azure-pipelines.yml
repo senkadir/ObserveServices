@@ -3,7 +3,7 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-name: 1.0.$(Rev:.r)
+name: $(Major).$(Minor).$(Patch)
 
 trigger:
   branches:
@@ -19,6 +19,9 @@ variables:
   buildConfiguration: 'Release'
   project: '**/ObserveServices.Core.csproj'
   testProjects: '**/*[Tt]ests/*.csproj'
+  Major: 1,
+  Minor: 0,
+  Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
 
 steps:
 - task: DotNetCoreCLI@2
@@ -43,16 +46,6 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: Publish
-  inputs:
-    command: publish
-    publishWebProjects: false
-    projects: '$(project)'
-    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
-    zipAfterPublish: True
-    workingDirectory: src/
-
-- task: DotNetCoreCLI@2
-  displayName: Publish3
   inputs:
     command: publish
     publishWebProjects: false
