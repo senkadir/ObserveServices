@@ -19,8 +19,8 @@ variables:
   buildConfiguration: 'Release'
   project: '**/ObserveServices.Core.csproj'
   testProjects: '**/*[Tt]ests/*.csproj'
-  Major: 1,
-  Minor: 0,
+  Major: 1
+  Minor: 0
   Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
 
 steps:
