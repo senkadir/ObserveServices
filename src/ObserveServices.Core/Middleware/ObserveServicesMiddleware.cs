@@ -31,8 +31,6 @@ namespace ObserveServices.Core
         {
             Services services = new Services();
 
-            var ss = _services.Select(x => x.ServiceType.ToString()).ToHashSet();
-
             Func<ServiceLifetime, IEnumerable<string>> filter = (lifeTime) =>
             {
                 return _services.Where(x => x.Lifetime == lifeTime)
