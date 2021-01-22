@@ -60,7 +60,7 @@ steps:
   inputs:
     command: pack
     nobuild: true
-    includesymbols: true
+    includesymbols: false
     versioningScheme: byEnvVar
     versionEnvVar: 'versionNumber'
     packagesToPack: '$(project)'
