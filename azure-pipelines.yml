@@ -22,6 +22,7 @@ variables:
   major: 1
   minor: 0
   patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 20)]
+  versionNumber: "$(major).$(minor).$(patch)"
 
 steps:
 - task: DotNetCoreCLI@2
@@ -60,10 +61,8 @@ steps:
     command: pack
     nobuild: true
     includesymbols: true
-    versioningScheme: ByPrereleaseNumber
-    majorVersion: '$(major)'
-    minorVersion: 0
-    patchVersion: 20
+    versioningScheme: byEnvVar
+    versionEnvVar: '$(versionNumber)'
     packagesToPack: '$(project)'
     outputDir: '$(Build.ArtifactStagingDirectory)/nugetpack'
 
@@ -75,4 +74,4 @@ steps:
     nuGetFeedType: external
     publishFeedCredentials: 'Nuget push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/nugetpack/*.nupkg'
-  continueOnError: true
+  continueOnError: false
