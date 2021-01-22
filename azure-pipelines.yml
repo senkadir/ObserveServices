@@ -21,7 +21,7 @@ variables:
   testProjects: '**/*[Tt]ests/*.csproj'
   major: 1
   minor: 0
-  patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 0)]
+  patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 20)]
 
 steps:
 - task: DotNetCoreCLI@2
