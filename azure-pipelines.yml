@@ -62,8 +62,8 @@ steps:
     includesymbols: true
     versioningScheme: ByPrereleaseNumber
     majorVersion: '$(major)'
-    minorVersion: '$(minor)'
-    patchVersion: '20'
+    minorVersion: 0
+    patchVersion: 20
     packagesToPack: '$(project)'
     outputDir: '$(Build.ArtifactStagingDirectory)/nugetpack'
 
