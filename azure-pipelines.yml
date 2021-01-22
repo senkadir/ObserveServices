@@ -62,7 +62,7 @@ steps:
     nobuild: true
     includesymbols: true
     versioningScheme: byEnvVar
-    versionEnvVar: '$(versionNumber)'
+    versionEnvVar: 'versionNumber'
     packagesToPack: '$(project)'
     outputDir: '$(Build.ArtifactStagingDirectory)/nugetpack'
 
