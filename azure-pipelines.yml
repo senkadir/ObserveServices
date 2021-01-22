@@ -21,8 +21,7 @@ variables:
   testProjects: '**/*[Tt]ests/*.csproj'
   major: 1
   minor: 0
-  patch: 15
-  #$[counter(format('{0}.{1}', variables['major'], variables['minor']), 20)]
+  patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 20)]
 
 steps:
 - task: DotNetCoreCLI@2
@@ -64,7 +63,7 @@ steps:
     versioningScheme: ByPrereleaseNumber
     majorVersion: '$(major)'
     minorVersion: '$(minor)'
-    patchVersion: '$(patch)'
+    patchVersion: '20'
     packagesToPack: '$(project)'
     outputDir: '$(Build.ArtifactStagingDirectory)/nugetpack'
 
