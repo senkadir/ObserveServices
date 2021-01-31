@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Oldu lan</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+    <script>
+
+        var data = JSON.parse('%(ConfigObject)');
+
+        $(document).ready(function () {
+
+
+            $('#services_table').DataTable({
+                data: data,
+
+                columns: [
+                    { data: 'Type' },
+                    { data: 'Name' }
+                ],
+
+                rowGroup: {
+                    dataSrc: 'Type'
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <table id="services_table" class="display compact">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</body>
+</html>

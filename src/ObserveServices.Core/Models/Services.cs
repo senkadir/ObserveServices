@@ -24,6 +24,15 @@ namespace ObserveServices.Core
         public IEnumerable<string> ScopedServices { get; set; }
 
         public IEnumerable<string> SingletonServices { get; set; }
+
+        public IList<ServicesModel> ServicesModels { get; set; }
+    }
+
+    public class ServicesModel
+    {
+        public string Type { get; set; }
+
+        public string Name { get; set; }
     }
 
     public class Statistics
