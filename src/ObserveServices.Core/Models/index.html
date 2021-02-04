@@ -3,12 +3,22 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Oldu lan</title>
+    <title>Be careful with redundant services!</title>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            font-size:13px;
+        }
+       /* table.dataTable tbody tr.group {
+            background-color: #3c3a3a;
+        }*/
+    </style>
 
     <script>
 
@@ -26,7 +36,39 @@
                 ],
 
                 rowGroup: {
-                    dataSrc: 'Type'
+                    dataSrc: 'Type',
+                    startRender: function (rows, group) {
+                        return group + ' (' + rows.count() + ' rows)';
+                    }
+                },
+
+                "displayLength": 100,
+
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+
+                    api.column(0, { page: 'current' }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before(
+                                '<tr class="group"><td colspan="2">' + group +  '<span class="group-count"></span></td></tr>'
+                            );
+
+                            last = group;
+                        }
+                    });
+                }
+            });
+
+            // Order by the grouping
+            $('#services_table tbody').on('click', 'tr.group', function () {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                    table.order([groupColumn, 'desc']).draw();
+                }
+                else {
+                    table.order([groupColumn, 'asc']).draw();
                 }
             });
         });
@@ -37,8 +79,8 @@
     <table id="services_table" class="display compact">
         <thead>
             <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
+                <th>Lifetime</th>
+                <th>Service Type</th>
             </tr>
         </thead>
         <tbody>
