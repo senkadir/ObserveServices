@@ -1,6 +1,6 @@
 # ObserveServices
 
-You can observe what's happining in dependeny injection collection.
+Observe what's happening in your dependency injection collection.
 
 [Nuget package](https://www.nuget.org/packages/ObserveServices.Core)
 
